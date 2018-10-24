@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBillTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false">
+                <h:panelGrid class="table" columns="2">
+                    <h:outputLabel value="#{bundle.EditBillLabel_id}" for="id" />
+                    <h:inputText class="form-control" id="id" value="#{billController.selected.id}" readonly="#{facesContext.renderResponse}" title="#{bundle.EditBillTitle_id}" required="true" requiredMessage="#{bundle.EditBillRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditBillLabel_billStatusId}" for="billStatusId" />
+                    <h:selectOneMenu class="form-control" id="billStatusId" value="#{billController.selected.billStatusId}" title="#{bundle.EditBillTitle_billStatusId}" required="true" requiredMessage="#{bundle.EditBillRequiredMessage_billStatusId}">
+                        <f:selectItems value="#{billStatusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBillLabel_hotelReservationId}" for="hotelReservationId" />
+                    <h:inputText class="form-control" id="hotelReservationId" value="#{billController.selected.hotelReservationId}" title="#{bundle.EditBillTitle_hotelReservationId}"  readonly="#{facesContext.renderResponse}" required="true" requiredMessage="#{bundle.EditBillRequiredMessage_hotelReservationId}"/>
+                    
+                    <h:outputLabel value="#{bundle.ViewBillTitle_hotelReservationIdClientIdName}"/>
+                    <h:inputText value="#{billController.selected.hotelReservationId.clientId.name}" readonly="#{facesContext.renderResponse}" class="form-control" title="#{bundle.ViewBillTitle_hotelReservationIdClientIdName}"/>
+                    <h:outputLabel value="#{bundle.ViewHotelReservationLabel_entryDate}"/>
+                    <h:inputText value="#{billController.selected.hotelReservationId.entryDate}" readonly="#{facesContext.renderResponse}" class="form-control" title="#{bundle.ViewHotelReservationLabel_entryDate}">
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.ViewHotelReservationLabel_exitDate}"/>
+                    <h:inputText value="#{billController.selected.hotelReservationId.exitDate}" class="form-control" readonly="#{facesContext.renderResponse}" title="#{bundle.ViewHotelReservationLabel_exitDate}">
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.ViewBillHotelReservationTotalDaysLabel}"/>
+                    <h:inputText value="#{billController.selected.totalDays}" class="form-control" readonly="#{facesContext.renderResponse}" title="#{bundle.ViewBillHotelReservationTotalDaysLabel}"/>
+                    <h:outputLabel value="#{bundle.ViewBillTotalBillLabel}"/>
+                    <h:inputText value="#{billController.selected.totalBill}" readonly="#{facesContext.renderResponse}" class="form-control" title="#{bundle.ViewBillTotalBillLabel}"/>
+                    
+                </h:panelGrid>
+                <h:commandLink class="btn btn-primary"  action="#{billController.update}" value="#{bundle.EditBillSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink  class="btn btn-default" action="#{billController.prepareList}" value="#{bundle.EditBillShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link  class="btn btn-default" outcome="/index" value="#{bundle.EditBillIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

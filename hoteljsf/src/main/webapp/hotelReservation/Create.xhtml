@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHotelReservationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false">
+                <h:panelGrid class="table" columns="2">
+                    <h:outputLabel value="#{bundle.CreateHotelReservationLabel_id}" for="id" />
+                    <h:inputText class="form-control" id="id" value="#{hotelReservationController.selected.id}" title="#{bundle.CreateHotelReservationTitle_id}" required="false" readonly="true" requiredMessage="#{bundle.CreateHotelReservationRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateHotelReservationLabel_entryDate}" for="entryDate" />
+                    <h:inputText class="form-control date" id="entryDate" value="#{hotelReservationController.selected.entryDate}" title="#{bundle.CreateHotelReservationTitle_entryDate}" required="false" requiredMessage="#{bundle.CreateHotelReservationRequiredMessage_entryDate}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT-3" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHotelReservationLabel_exitDate}" for="exitDate"/>
+                    <h:inputText  class="form-control date" id="exitDate" value="#{hotelReservationController.selected.exitDate}" title="#{bundle.CreateHotelReservationTitle_exitDate}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT-3" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHotelReservationLabel_priceDaily}" for="priceDaily" />
+                    <h:inputText readonly="#{facesContext.renderResponse}" immediate="true" class="form-control" id="priceDaily" value="#{hotelReservationController.selected.priceDaily}" title="#{bundle.CreateHotelReservationTitle_priceDaily}" required="true" requiredMessage="#{bundle.CreateHotelReservationRequiredMessage_priceDaily}"/>
+                    <h:outputLabel value="#{bundle.CreateHotelReservationLabel_bedroomId}" for="bedroomId" />
+                    <h:selectOneMenu class="form-control" id="bedroomId" value="#{hotelReservationController.selected.bedroomId}" title="#{bundle.CreateHotelReservationTitle_bedroomId}" required="true" requiredMessage="#{bundle.CreateHotelReservationRequiredMessage_bedroomId}">
+                        <p:ajax listener="#{hotelReservationController.onPriceDailyChange}" update="priceDaily"/>
+                        <f:selectItems value="#{hotelReservationController.itemsAvailableSelectOneBedroom}" />
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateHotelReservationLabel_clientId}" for="clientId" />
+                    <h:selectOneMenu class="form-control" id="clientId" value="#{hotelReservationController.selected.clientId}" title="#{bundle.CreateHotelReservationTitle_clientId}" required="true" requiredMessage="#{bundle.CreateHotelReservationRequiredMessage_clientId}">
+                        <f:selectItems value="#{clientController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateHotelReservationLabel_reservationStatusId}" for="reservationStatusId" />
+                    <h:selectOneMenu class="form-control" id="reservationStatusId" value="#{hotelReservationController.selected.reservationStatusId}" title="#{bundle.CreateHotelReservationTitle_reservationStatusId}" required="true" requiredMessage="#{bundle.CreateHotelReservationRequiredMessage_reservationStatusId}">
+                        <f:selectItems value="#{reservationStatusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="Disponiveis" id="btnComm" style="display: none;" >
+                    <f:ajax event="action" execute="entryDate exitDate" render="bedroomId" immediate="true" />
+                </h:commandButton>
+                <br />
+                <h:commandLink class="btn btn-primary" action="#{hotelReservationController.create}" value="#{bundle.CreateHotelReservationSaveLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink class="btn btn-default" action="#{hotelReservationController.prepareList}" value="#{bundle.CreateHotelReservationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link class="btn btn-default" outcome="/index" value="#{bundle.CreateHotelReservationIndexLink}"/>
+            </h:form>
+
+        </ui:define>
+        <ui:define name="scripts">
+            <h:outputScript name="plugins/daterangepicker/moment.js"></h:outputScript>
+            <h:outputScript name="plugins/daterangepicker/daterangepicker.js"></h:outputScript>
+            <script>
+                $(function () {
+                    //Date range picker with time picker
+                    $('.date').daterangepicker(
+                            {
+                                timePickerIncrement: 30,
+                                format: 'YYYY-MM-DD'
+                            }
+
+                    );
+                    $('.date').on('apply.daterangepicker', function (ev, picker) {
+                        $('#entryDate').val(picker.startDate.format('YYYY-MM-DD'));
+                        $('#exitDate').val(picker.endDate.format('YYYY-MM-DD'));
+                        $('#btnComm').trigger('click');
+                    });
+
+                });
+                
+                //$('#priceDaily').maskMoney({ precision: 2, decimal: '.', thousands: '' });
+            </script>
+        </ui:define>
+    </ui:composition>
+
+</html>

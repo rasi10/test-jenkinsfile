@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBedroomTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false">
+                <h:panelGrid class="table" columns="2">
+                    <h:outputLabel value="#{bundle.EditBedroomLabel_id}" for="id" />
+                    <h:inputText class="form-control" id="id" readonly="#{facesContext.renderResponse}" value="#{bedroomController.selected.id}" title="#{bundle.EditBedroomTitle_id}" required="true" requiredMessage="#{bundle.EditBedroomRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditBedroomLabel_description}" for="description" />
+                    <h:inputText class="form-control" id="description" value="#{bedroomController.selected.description}" title="#{bundle.EditBedroomTitle_description}" required="true" requiredMessage="#{bundle.EditBedroomRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.EditBedroomLabel_floor}" for="floor" />
+                    <h:inputText class="form-control" id="floor" value="#{bedroomController.selected.floor}" title="#{bundle.EditBedroomTitle_floor}" />
+                    <h:outputLabel value="#{bundle.EditBedroomLabel_number}" for="number" />
+                    <h:inputText class="form-control" id="number" value="#{bedroomController.selected.number}" title="#{bundle.EditBedroomTitle_number}" required="true" requiredMessage="#{bundle.EditBedroomRequiredMessage_number}"/>
+                    <h:outputLabel value="#{bundle.EditBedroomLabel_priceDaily}" for="priceDaily" />
+                    <h:inputText class="form-control" id="priceDaily" value="#{bedroomController.selected.priceDaily}" title="#{bundle.EditBedroomTitle_priceDaily}" required="true" requiredMessage="#{bundle.EditBedroomRequiredMessage_priceDaily}"/>
+                    <h:outputLabel value="#{bundle.EditBedroomLabel_bedroomStatusId}" for="bedroomStatusId" />
+                    <h:selectOneMenu class="form-control" id="bedroomStatusId" value="#{bedroomController.selected.bedroomStatusId}" title="#{bundle.EditBedroomTitle_bedroomStatusId}" required="true" requiredMessage="#{bundle.EditBedroomRequiredMessage_bedroomStatusId}">
+                        <f:selectItems value="#{bedroomStatusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBedroomLabel_typeBedroomId}" for="typeBedroomId" />
+                    <h:selectOneMenu class="form-control" id="typeBedroomId" value="#{bedroomController.selected.typeBedroomId}" title="#{bundle.EditBedroomTitle_typeBedroomId}" required="true" requiredMessage="#{bundle.EditBedroomRequiredMessage_typeBedroomId}">
+                        <f:selectItems value="#{typeBedroomController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink id="saveBtn" class="btn btn-primary" action="#{bedroomController.update}" value="#{bundle.EditBedroomSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink id="listBtn" class="btn btn-default" action="#{bedroomController.prepareList}" value="#{bundle.EditBedroomShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link class="btn btn-default" outcome="/index" value="#{bundle.EditBedroomIndexLink}" />
+            </h:form>
+        </ui:define>
+        <ui:define name="scripts">
+            <script>
+                $('#priceDaily').maskMoney({ precision: 2, decimal: '.', thousands: '' });
+                $('#number').maskMoney({ precision: 0, decimal: '.', thousands: '' });
+                $('#floor').maskMoney({ precision: 0, decimal: '.', thousands: '' });
+            </script>
+        </ui:define>
+    </ui:composition>
+
+</html>

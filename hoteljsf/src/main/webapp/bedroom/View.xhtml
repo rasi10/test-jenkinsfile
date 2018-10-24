@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBedroomTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false">
+                <h:panelGrid class="table table-striped table-hover table-bordered" columns="2">
+                    <h:outputText value="#{bundle.ViewBedroomLabel_id}"/>
+                    <h:outputText value="#{bedroomController.selected.id}" title="#{bundle.ViewBedroomTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewBedroomLabel_description}"/>
+                    <h:outputText value="#{bedroomController.selected.description}" title="#{bundle.ViewBedroomTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewBedroomLabel_floor}"/>
+                    <h:outputText value="#{bedroomController.selected.floor}" title="#{bundle.ViewBedroomTitle_floor}"/>
+                    <h:outputText value="#{bundle.ViewBedroomLabel_number}"/>
+                    <h:outputText value="#{bedroomController.selected.number}" title="#{bundle.ViewBedroomTitle_number}"/>
+                    <h:outputText value="#{bundle.ViewBedroomLabel_priceDaily}"/>
+                    <h:outputText value="#{bedroomController.selected.priceDaily}" title="#{bundle.ViewBedroomTitle_priceDaily}"/>
+                    <h:outputText value="#{bundle.ViewBedroomLabel_bedroomStatusId}"/>
+                    <h:outputText value="#{bedroomController.selected.bedroomStatusId.toString()}" title="#{bundle.ViewBedroomTitle_bedroomStatusId}"/>
+                    <h:outputText value="#{bundle.ViewBedroomLabel_typeBedroomId}"/>
+                    <h:outputText value="#{bedroomController.selected.typeBedroomId.toString()}" title="#{bundle.ViewBedroomTitle_typeBedroomId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink class="btn btn-default" action="#{bedroomController.destroyAndView}" value="#{bundle.ViewBedroomDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" class="btn btn-default" value="#{bundle.ViewBedroomEditLink}"/>
+                <br />
+                <h:commandLink class="btn btn-default" action="#{bedroomController.prepareCreate}" value="#{bundle.ViewBedroomCreateLink}" />
+                <br />
+                <h:commandLink class="btn btn-default" action="#{bedroomController.prepareList}" value="#{bundle.ViewBedroomShowAllLink}"/>
+                <br />
+                <br />
+                <h:link class="btn btn-default" outcome="/index" value="#{bundle.ViewBedroomIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

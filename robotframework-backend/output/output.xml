@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20181023 00:16:24.486" generator="Robot 3.0.4 (Python 2.7.12 on linux2)">
+<suite source="/home/robot/workspace/accomodation-jenkins/robotframework-backend/00_Regression_tests.robot" id="s1" name="00 Regression tests">
+<test id="s1-t1" name="Test get total of clients">
+<kw name="Get the total of clients" library="client_operations">
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this</doc>
+<arguments>
+<arg>${http_context}</arg>
+<arg>${http_variable}</arg>
+</arguments>
+<msg timestamp="20181023 00:16:25.177" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
+<msg timestamp="20181023 00:16:25.178" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20181023 00:16:25.180" starttime="20181023 00:16:25.175"></status>
+</kw>
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Content-Type</arg>
+<arg>${header_content_json}</arg>
+</arguments>
+<msg timestamp="20181023 00:16:25.182" level="INFO">Set request header "Content-Type" to "application/json"</msg>
+<status status="PASS" endtime="20181023 00:16:25.182" starttime="20181023 00:16:25.180"></status>
+</kw>
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Accept</arg>
+<arg>${header_accept_all}</arg>
+</arguments>
+<msg timestamp="20181023 00:16:25.187" level="INFO">Set request header "Accept" to "*/*"</msg>
+<status status="PASS" endtime="20181023 00:16:25.187" starttime="20181023 00:16:25.184"></status>
+</kw>
+<kw name="GET" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>${get_clients_counter_endpoint}</arg>
+</arguments>
+<status status="PASS" endtime="20181023 00:16:25.260" starttime="20181023 00:16:25.188"></status>
+</kw>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${response_status}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.264" level="INFO">${response_status} = 200 OK</msg>
+<status status="PASS" endtime="20181023 00:16:25.264" starttime="20181023 00:16:25.261"></status>
+</kw>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${total_clients}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.268" level="INFO">${total_clients} = 10</msg>
+<status status="PASS" endtime="20181023 00:16:25.269" starttime="20181023 00:16:25.266"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${\n}Getting the total of clients:${total_clients}</arg>
+</arguments>
+<status status="PASS" endtime="20181023 00:16:25.272" starttime="20181023 00:16:25.269"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${\n}Status code:${response_status}</arg>
+</arguments>
+<status status="PASS" endtime="20181023 00:16:25.276" starttime="20181023 00:16:25.273"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response_status}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" endtime="20181023 00:16:25.281" starttime="20181023 00:16:25.279"></status>
+</kw>
+<status status="PASS" endtime="20181023 00:16:25.284" starttime="20181023 00:16:25.172"></status>
+</kw>
+<status status="PASS" endtime="20181023 00:16:25.285" critical="yes" starttime="20181023 00:16:25.169"></status>
+</test>
+<test id="s1-t2" name="Test create a new client">
+<kw name="Create a client" library="client_operations">
+<kw name="Generate a random client" library="client_operations">
+<assign>
+<var>${request_body}</var>
+</assign>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>100</arg>
+</arguments>
+<assign>
+<var>${id}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.300" level="INFO">${id} = 100</msg>
+<status status="PASS" endtime="20181023 00:16:25.300" starttime="20181023 00:16:25.297"></status>
+</kw>
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>10</arg>
+<arg>[LOWER]</arg>
+</arguments>
+<assign>
+<var>${name}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.304" level="INFO">${name} = unkeszdxou</msg>
+<status status="PASS" endtime="20181023 00:16:25.304" starttime="20181023 00:16:25.301"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>1473633063279</arg>
+</arguments>
+<assign>
+<var>${createDate}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.306" level="INFO">${createDate} = 1473633063279</msg>
+<status status="PASS" endtime="20181023 00:16:25.307" starttime="20181023 00:16:25.305"></status>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=</arg>
+<arg>${name}</arg>
+<arg>@email.com</arg>
+</arguments>
+<assign>
+<var>${email}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.313" level="INFO">${email} = unkeszdxou@email.com</msg>
+<status status="PASS" endtime="20181023 00:16:25.313" starttime="20181023 00:16:25.309"></status>
+</kw>
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>9</arg>
+<arg>[NUMBERS]</arg>
+</arguments>
+<assign>
+<var>${socialSecurityNumber}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.317" level="INFO">${socialSecurityNumber} = 796037020</msg>
+<status status="PASS" endtime="20181023 00:16:25.317" starttime="20181023 00:16:25.315"></status>
+</kw>
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>1</arg>
+<arg>MF</arg>
+</arguments>
+<assign>
+<var>${gender}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.321" level="INFO">${gender} = F</msg>
+<status status="PASS" endtime="20181023 00:16:25.321" starttime="20181023 00:16:25.319"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>id=${id}</arg>
+<arg>name=${name}</arg>
+<arg>createDate=${createDate}</arg>
+<arg>email=${email}</arg>
+<arg>gender=${gender}</arg>
+<arg>socialSecurityNumber=${socialSecurityNumber}</arg>
+</arguments>
+<assign>
+<var>${dictionary}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.334" level="INFO">${dictionary} = {u'id': u'100', u'name': u'unkeszdxou', u'createDate': u'1473633063279', u'email': u'unkeszdxou@email.com', u'gender': u'F', u'socialSecurityNumber': u'796037020'}</msg>
+<status status="PASS" endtime="20181023 00:16:25.334" starttime="20181023 00:16:25.323"></status>
+</kw>
+<kw name="Stringify Json" library="HttpLibrary.HTTP">
+<doc>Converts the data structure to a string containing its JSON string representation</doc>
+<arguments>
+<arg>${dictionary}</arg>
+</arguments>
+<assign>
+<var>${client_json}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.339" level="INFO">${client_json} = {"id": "100", "name": "unkeszdxou", "createDate": "1473633063279", "email": "unkeszdxou@email.com", "gender": "F", "socialSecurityNumber": "796037020"}</msg>
+<status status="PASS" endtime="20181023 00:16:25.339" starttime="20181023 00:16:25.337"></status>
+</kw>
+<msg timestamp="20181023 00:16:25.341" level="INFO">${request_body} = {"id": "100", "name": "unkeszdxou", "createDate": "1473633063279", "email": "unkeszdxou@email.com", "gender": "F", "socialSecurityNumber": "796037020"}</msg>
+<status status="PASS" endtime="20181023 00:16:25.341" starttime="20181023 00:16:25.296"></status>
+</kw>
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this</doc>
+<arguments>
+<arg>${http_context}</arg>
+<arg>${http_variable}</arg>
+</arguments>
+<msg timestamp="20181023 00:16:25.346" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
+<msg timestamp="20181023 00:16:25.346" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20181023 00:16:25.347" starttime="20181023 00:16:25.343"></status>
+</kw>
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Content-Type</arg>
+<arg>${header_content_json}</arg>
+</arguments>
+<msg timestamp="20181023 00:16:25.351" level="INFO">Set request header "Content-Type" to "application/json"</msg>
+<status status="PASS" endtime="20181023 00:16:25.352" starttime="20181023 00:16:25.348"></status>
+</kw>
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Accept</arg>
+<arg>${header_accept_all}</arg>
+</arguments>
+<msg timestamp="20181023 00:16:25.355" level="INFO">Set request header "Accept" to "*/*"</msg>
+<status status="PASS" endtime="20181023 00:16:25.356" starttime="20181023 00:16:25.353"></status>
+</kw>
+<kw name="Set Request Body" library="HttpLibrary.HTTP">
+<doc>Set the request body for the next HTTP request.</doc>
+<arguments>
+<arg>${request_body}</arg>
+</arguments>
+<msg timestamp="20181023 00:16:25.359" level="INFO">Request body set to "{"id": "100", "name": "unkeszdxou", "createDate": "1473633063279", "email": "unkeszdxou@email.com", "gender": "F", "socialSecurityNumber": "796037020"}".</msg>
+<status status="PASS" endtime="20181023 00:16:25.360" starttime="20181023 00:16:25.356"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${\n}Creating a new client${\n}DATA:${request_body}</arg>
+</arguments>
+<status status="PASS" endtime="20181023 00:16:25.365" starttime="20181023 00:16:25.363"></status>
+</kw>
+<kw name="POST" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP POST request.</doc>
+<arguments>
+<arg>${create_a_client_endpoint}</arg>
+</arguments>
+<status status="PASS" endtime="20181023 00:16:25.435" starttime="20181023 00:16:25.365"></status>
+</kw>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${response_status}</var>
+</assign>
+<msg timestamp="20181023 00:16:25.438" level="INFO">${response_status} = 204 No Content</msg>
+<status status="PASS" endtime="20181023 00:16:25.439" starttime="20181023 00:16:25.436"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${\n}Status code:${response_status}</arg>
+</arguments>
+<status status="PASS" endtime="20181023 00:16:25.446" starttime="20181023 00:16:25.440"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response_status}</arg>
+<arg>204</arg>
+</arguments>
+<status status="PASS" endtime="20181023 00:16:25.449" starttime="20181023 00:16:25.447"></status>
+</kw>
+<status status="PASS" endtime="20181023 00:16:25.449" starttime="20181023 00:16:25.292"></status>
+</kw>
+<status status="PASS" endtime="20181023 00:16:25.451" critical="yes" starttime="20181023 00:16:25.288"></status>
+</test>
+<status status="PASS" endtime="20181023 00:16:25.454" starttime="20181023 00:16:24.496"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="00 Regression tests" pass="2">00 Regression tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateClientTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="style">
+            <style>
+                input[name="gender"] {
+                    margin-left: 20px;
+                }
+            </style>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false">
+                <h:panelGrid class="table"  columns="2">
+                    <h:outputLabel value="#{bundle.CreateClientLabel_id}" for="id" />
+                    <h:inputText class="form-control" id="id" value="#{clientController.selected.id}" title="#{bundle.CreateClientTitle_id}" required="false" readonly="true" requiredMessage="#{bundle.CreateClientRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateClientLabel_name}" for="name" />
+                    <h:inputText class="form-control" id="name" value="#{clientController.selected.name}" title="#{bundle.CreateClientTitle_name}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.CreateClientLabel_createDate}" for="createDate" />
+                    <h:inputText class="form-control datePiker" id="createDate" value="#{clientController.selected.createDate}" title="#{bundle.CreateClientTitle_createDate}" readonly="true" required="false" requiredMessage="#{bundle.CreateClientRequiredMessage_createDate}">
+<!--                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />-->
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateClientLabel_email}" for="email" />
+                    <h:inputText class="form-control" id="email" value="#{clientController.selected.email}" title="#{bundle.CreateClientTitle_email}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.CreateClientLabel_gender}" for="gender" />
+                    <h:selectOneRadio id="gender" value="#{clientController.selected.gender}" title="#{bundle.CreateClientTitle_gender}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_gender}">
+                        <f:selectItem itemLabel="Male" itemValue="M" />
+                        <f:selectItem itemLabel="Female" itemValue="F" />
+                    </h:selectOneRadio>
+                    <h:outputLabel value="#{bundle.CreateClientLabel_socialSecurityNumber}" for="socialSecurityNumber" />
+                    <h:inputText class="form-control" id="socialSecurityNumber" value="#{clientController.selected.socialSecurityNumber}" title="#{bundle.CreateClientTitle_socialSecurityNumber}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_socialSecurityNumber}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink class="btn btn-primary" action="#{clientController.create}" value="#{bundle.CreateClientSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink class="btn btn-default" action="#{clientController.prepareList}" value="#{bundle.CreateClientShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link class="btn btn-default" outcome="/index" value="#{bundle.CreateClientIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+    
+</html>

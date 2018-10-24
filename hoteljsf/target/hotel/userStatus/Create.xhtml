@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUserStatusTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUserStatusLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{userStatusController.selected.id}" title="#{bundle.CreateUserStatusTitle_id}" required="true" requiredMessage="#{bundle.CreateUserStatusRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateUserStatusLabel_code}" for="code" />
+                    <h:inputText id="code" value="#{userStatusController.selected.code}" title="#{bundle.CreateUserStatusTitle_code}" required="true" requiredMessage="#{bundle.CreateUserStatusRequiredMessage_code}"/>
+                    <h:outputLabel value="#{bundle.CreateUserStatusLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{userStatusController.selected.name}" title="#{bundle.CreateUserStatusTitle_name}" required="true" requiredMessage="#{bundle.CreateUserStatusRequiredMessage_name}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userStatusController.create}" value="#{bundle.CreateUserStatusSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{userStatusController.prepareList}" value="#{bundle.CreateUserStatusShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUserStatusIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

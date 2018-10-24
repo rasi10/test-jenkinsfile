@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTypeBedroomTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTypeBedroomLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{typeBedroomController.selected.id}" title="#{bundle.CreateTypeBedroomTitle_id}" required="false" readonly="true" requiredMessage="#{bundle.CreateTypeBedroomRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateTypeBedroomLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{typeBedroomController.selected.name}" title="#{bundle.CreateTypeBedroomTitle_name}" required="true" requiredMessage="#{bundle.CreateTypeBedroomRequiredMessage_name}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{typeBedroomController.create}" value="#{bundle.CreateTypeBedroomSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{typeBedroomController.prepareList}" value="#{bundle.CreateTypeBedroomShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTypeBedroomIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

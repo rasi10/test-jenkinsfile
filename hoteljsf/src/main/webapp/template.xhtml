@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+        <!-- jQuery -->
+        <!--<script src="./bootstrap/bower_components/jquery/dist/jquery.min.js"></script>-->
+        <h:outputScript name="bootstrap/bower_components/jquery/dist/jquery.min.js"></h:outputScript>
+        <script src="http://plentz.github.io/jquery-maskmoney/javascripts/jquery.maskMoney.min.js"></script>
+
+        <h:outputStylesheet name="bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <!-- Bootstrap Core CSS -->
+        <!--<link href="./bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>-->
+
+        <!-- MetisMenu CSS -->
+        <!--<link href="./bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet"/>-->
+
+        <h:outputStylesheet name="bootstrap/bower_components/metisMenu/dist/metisMenu.min.css"/>
+
+        <!-- Custom CSS -->
+        <!--<link href="./bootstrap/dist/css/sb-admin-2.css" rel="stylesheet"/>-->
+        <h:outputStylesheet name="bootstrap/dist/css/sb-admin-2.css"/>
+
+        <!-- Custom Fonts -->
+        <!--<link href="./bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>-->
+        <h:outputStylesheet name="bootstrap/bower_components/font-awesome/css/font-awesome.min.css"/>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <h:outputStylesheet name="plugins/daterangepicker/daterangepicker-bs3.css"/>
+        <ui:insert name="style"></ui:insert>
+    </h:head>
+
+    <h:body>
+        <div id="wrapper">
+            
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h:link outcome="/index" class="navbar-brand">Hotel Accommodadion</h:link>
+
+                    </div>
+                    <!-- /.navbar-header -->
+                    <ul  class="nav navbar-top-links navbar-right">
+                        <li>
+                            <p:graphicImage name="img/test4quality.png" />
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><h:link outcome="/login/login.xhtml"><i class="fa fa-sign-out fa-fw"></i> Logout</h:link>
+                                </li>
+                            </ul>
+                            <!-- /.dropdown-user -->
+                        </li>
+                    </ul>
+
+                    <div class="navbar-default sidebar" role="navigation">
+                        <div class="sidebar-nav navbar-collapse">
+                            <h:form id="menu_principal">
+                            <ul class="nav" id="side-menu">
+                                <li class="sidebar-search">
+                                    <div class="input-group custom-search-form">
+                                        <input type="text" class="form-control" placeholder="Search..."/>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <!-- /input-group -->
+                                </li>
+                                <li>
+                                    <h:link outcome="/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</h:link>
+                                </li>
+                                <li>
+                                    <h:commandLink action="#{bedroomController.List}"><i class="glyphicon glyphicon-bed fa-fw"></i> Bedroom</h:commandLink>
+
+                                    <!-- /.nav-second-level -->
+                                </li>
+                                <li>
+                                    <h:commandLink action="#{billController.List}"><i class="fa fa-credit-card fa-fw"></i> Bill</h:commandLink>
+                                </li>
+                                <li>
+                                    <h:commandLink action="#{clientController.List}"><i class="fa fa-male fa-fw"></i> Client</h:commandLink>
+                                </li>
+                                <li>
+                                    <h:commandLink action="#{hotelReservationController.List}" >
+                                        <i class="fa fa-university fa-fw"></i> Reservation
+                                    </h:commandLink>
+                                    <!-- /.nav-second-level -->
+                                </li>
+                                <li>
+                                    <h:commandLink action="#{userController.List}">
+                                        <i class="fa fa-user fa-fw"></i>
+                                        User  
+                                    </h:commandLink>
+                                    <!--<a href="/user/List"> User</a>-->
+                                    <!-- /.nav-second-level -->
+                                </li>
+                            </ul>
+                            </h:form>
+                        </div>
+                        <!-- /.sidebar-collapse -->
+                    </div>
+                    <!-- /.navbar-static-side -->
+                </nav>
+
+                <!-- Page Content -->
+                <div id="page-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">
+                                    <ui:insert name="title">Default Title</ui:insert>
+                                </h1>
+
+                                <p>
+                                    <ui:insert name="body">Default Body</ui:insert>
+                                </p>
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </div>
+                <!-- /#page-wrapper -->
+            
+        </div>
+        <!-- /#wrapper -->
+
+
+
+        <!-- Bootstrap Core JavaScript -->
+        <!--<script src="./bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+        <h:outputScript name="bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></h:outputScript>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <!--        <script src="./bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>-->
+        <h:outputScript name="bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></h:outputScript>
+
+        <!-- Custom Theme JavaScript -->
+        <!--        <script src="./bootstrap/dist/js/sb-admin-2.js"></script>-->
+        <h:outputScript name="bootstrap/dist/js/sb-admin-2.js"></h:outputScript>
+
+
+        <ui:insert name="scripts"></ui:insert>
+    </h:body>
+
+</html>

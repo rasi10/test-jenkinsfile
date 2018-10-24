@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="http://test4quality.se">
+                            <img alt="Brand" src="http://test4quality.se/wp-content/uploads/2014/12/logo1.png" style="margin-top: -15px;">
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+            <div class="col-md-12">
+                <div class="row">
+                    <h1>Web Services RESTful</h1>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Usage
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading-coll">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-coll" aria-expanded="true" aria-controls="collapse-coll">
+                                                Bill
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse-coll" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-coll">
+                                        <div class="panel-body">
+                                            <h4>View of GETs</h4>
+                                            [GET]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/bill</li>
+                                                <li class="list-group-item">/webresources/bill/{id}</li>
+                                                <li class="list-group-item">/webresources/bill/{from}/{to}</li>
+                                                <li class="list-group-item">/webresources/bill/count</li>
+
+                                            </ul>
+
+                                            <h4>Create</h4>
+                                            [POST]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/bill</li>
+                                            </ul>
+
+                                            <h4>Update</h4>
+                                            [PUT]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/bill/{id}</li>
+                                            </ul>
+
+                                            <h4>Delete</h4>
+                                            [DELETE]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/bill/{id}</li>
+                                            </ul>
+                                            <h4>View JSON</h4>
+                                            <pre>
+ {
+    "id": 43,
+    "billStatusId": {
+        "id": 1,
+        "code": 1,
+        "name": "PAY"
+    },
+    "hotelReservationId": {
+        "id": 5,
+        "entryDate": 1470538800000,
+        "exitDate": 1473649200000,
+        "priceDaily": 90,
+        "bedroomId": {
+            "id": 5,
+            "description": "NICE VIEW",
+            "floor": 2,
+            "number": 102,
+            "priceDaily": 300,
+            "bedroomStatusId": {
+                "id": 1,
+                "code": 0,
+                "name": "VACANT"
+            },
+            "typeBedroomId": {
+                "id": 5,
+                "name": "TOP BED KING"
+            }
+        },
+        "clientId": {
+            "id": 1,
+            "name": "JOÃƒO PAULO",
+            "createDate": 1451617200000,
+            "email": "JP.ALENCAR@HOTMAIL.COM",
+            "gender": "M",
+            "socialSecurityNumber": "14190842"
+        },
+        "reservationStatusId": {
+            "id": 1,
+            "code": 1,
+            "name": "CONFIRMED"
+        }
+    }
+}
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading-client">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-client" aria-expanded="true" aria-controls="collapse-client">
+                                                Client
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse-client" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-client">
+                                        <div class="panel-body">
+                                            <h4>View of GETs</h4>
+                                            [GET]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/client</li>
+                                                <li class="list-group-item">/webresources/client/{id}</li>
+                                                <li class="list-group-item">/webresources/client/{from}/{to}</li>
+                                                <li class="list-group-item">/webresources/client/count</li>
+
+                                            </ul>
+
+                                            <h4>Create</h4>
+                                            [POST]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/client</li>
+                                            </ul>
+
+                                            <h4>Update</h4>
+                                            [PUT]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/client/{id}</li>
+                                            </ul>
+
+                                            <h4>Delete</h4>
+                                            [DELETE]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/client/{id}</li>
+                                            </ul>
+                                            <h4>View JSON</h4>
+                                            <pre>
+ {
+    "id": 1,
+    "name": "JOÃƒO PAULO",
+    "createDate": 1451617200000,
+    "email": "JP.ALENCAR@HOTMAIL.COM",
+    "gender": "M",
+    "socialSecurityNumber": "14190842"
+}
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading-user">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-user" aria-expanded="true" aria-controls="collapse-user">
+                                                User
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse-user" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-user">
+                                        <div class="panel-body">
+                                            <h4>View of GETs</h4>
+                                            [GET]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/user</li>
+                                                <li class="list-group-item">/webresources/user/{id}</li>
+                                                <li class="list-group-item">/webresources/user/{from}/{to}</li>
+                                                <li class="list-group-item">/webresources/user/count</li>
+
+                                            </ul>
+
+                                            <h4>Create</h4>
+                                            [POST]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/user</li>
+                                            </ul>
+
+                                            <h4>Update</h4>
+                                            [PUT]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/user/{id}</li>
+                                            </ul>
+
+                                            <h4>Delete</h4>
+                                            [DELETE]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/user/{id}</li>
+                                            </ul>
+                                            <h4>View JSON</h4>
+                                            <pre>
+ {
+    "id": 13,
+    "login": "Yanne",
+    "password": "1966e694bad90686516f99cdf432800fdca39290",
+    "typeUser": 2,
+    "clientId": {
+        "id": 5,
+        "name": "YANNE",
+        "createDate": 1473267124445,
+        "email": "yanne_alencar@hotmail.com",
+        "gender": "F",
+        "socialSecurityNumber": "5374855"
+    },
+    "userStatusId": {
+        "id": 1,
+        "code": 1,
+        "name": "ACTIVE"
+    }
+}
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading-coll">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-bedroom" aria-expanded="true" aria-controls="collapse-bedroom">
+                                                Bedroom
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse-bedroom" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-bedroom">
+                                        <div class="panel-body">
+                                            <h4>View of GETs</h4>
+                                            [GET]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/bedroom</li>
+                                                <li class="list-group-item">/webresources/bedroom/{id}</li>
+                                                <li class="list-group-item">/webresources/bedroom/{from}/{to}</li>
+                                                <li class="list-group-item">/webresources/bedroom/count</li>
+
+                                            </ul>
+
+                                            <h4>Create</h4>
+                                            [POST]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/bedroom</li>
+                                            </ul>
+
+                                            <h4>Update</h4>
+                                            [PUT]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/bedroom/{id}</li>
+                                            </ul>
+
+                                            <h4>Delete</h4>
+                                            [DELETE]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/bedroom/{id}</li>
+                                            </ul>
+                                            <h4>View JSON</h4>
+                                            <pre>
+ {
+    "id": 2,
+    "description": "BEDROOM ACCESSIBLE",
+    "floor": 1,
+    "number": 200,
+    "priceDaily": 250,
+    "bedroomStatusId": {
+        "id": 1,
+        "code": 0,
+        "name": "VACANT"
+    },
+    "typeBedroomId": {
+        "id": 6,
+        "name": "WHEELCHAIR ACCESS"
+    }
+}
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading-hotelrest">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-hotelrest" aria-expanded="true" aria-controls="collapse-hotelrest">
+                                                Hotel Reservation
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse-hotelrest" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-hotelrest">
+                                        <div class="panel-body">
+                                            <h4>View of GETs</h4>
+                                            [GET]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/hotelreservation</li>
+                                                <li class="list-group-item">/webresources/hotelreservation/{id}</li>
+                                                <li class="list-group-item">/webresources/hotelreservation/{from}/{to}</li>
+                                                <li class="list-group-item">/webresources/hotelreservation/count</li>
+
+                                            </ul>
+
+                                            <h4>Create</h4>
+                                            [POST]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/hotelreservation</li>
+                                            </ul>
+
+                                            <h4>Update</h4>
+                                            [PUT]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/hotelreservation/{id}</li>
+                                            </ul>
+
+                                            <h4>Delete</h4>
+                                            [DELETE]
+                                            <ul class="list-group">
+                                                <li class="list-group-item">/webresources/hotelreservation/{id}</li>
+                                            </ul>
+                                            <h4>View JSON</h4>
+                                            <pre>
+{
+    "id": 3,
+    "entryDate": 1470798000000,
+    "exitDate": 1473994800000,
+    "priceDaily": 90,
+    "bedroomId": {
+        "id": 2,
+        "description": "BEDROOM ACCESSIBLE",
+        "floor": 1,
+        "number": 200,
+        "priceDaily": 250,
+        "bedroomStatusId": {
+            "id": 1,
+            "code": 0,
+            "name": "VACANT"
+        },
+        "typeBedroomId": {
+            "id": 6,
+            "name": "WHEELCHAIR ACCESS"
+        }
+    },
+    "clientId": {
+        "id": 1,
+        "name": "JOÃƒO PAULO",
+        "createDate": 1451617200000,
+        "email": "JP.ALENCAR@HOTMAIL.COM",
+        "gender": "M",
+        "socialSecurityNumber": "14190842"
+    },
+    "reservationStatusId": {
+        "id": 1,
+        "code": 1,
+        "name": "CONFIRMED"
+    }
+}
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </body>
+</html>

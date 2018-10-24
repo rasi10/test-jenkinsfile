@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBillStatusTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false">
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBillStatusLabel_id}"/>
+                    <h:outputText value="#{billStatusController.selected.id}" title="#{bundle.ViewBillStatusTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewBillStatusLabel_code}"/>
+                    <h:outputText value="#{billStatusController.selected.code}" title="#{bundle.ViewBillStatusTitle_code}"/>
+                    <h:outputText value="#{bundle.ViewBillStatusLabel_name}"/>
+                    <h:outputText value="#{billStatusController.selected.name}" title="#{bundle.ViewBillStatusTitle_name}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{billStatusController.destroyAndView}" value="#{bundle.ViewBillStatusDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBillStatusEditLink}"/>
+                <br />
+                <h:commandLink action="#{billStatusController.prepareCreate}" value="#{bundle.ViewBillStatusCreateLink}" />
+                <br />
+                <h:commandLink action="#{billStatusController.prepareList}" value="#{bundle.ViewBillStatusShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBillStatusIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

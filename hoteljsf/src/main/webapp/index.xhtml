@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:b="http://bootsfaces.net/ui"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml">
+    <ui:define name="title">Dashboard</ui:define>
+    <ui:define name="body">
+        <div class="row">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages  errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="glyphicon glyphicon-bed fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"><h:outputText value="#{bedroomController.getCountOfStatus(0)}"/> </div>
+                                <div>Rooms free!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h:link outcome="/bedroom/List">
+                        <div class="panel-footer">
+                            <span class="pull-left">Show All Bedrooms</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </h:link>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-credit-card fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"><h:outputText value="#{billController.getCountOfStatus(0)}"/></div>
+                                <div>Bills open!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h:link outcome="/bill/List">
+                        <div class="panel-footer">
+                            <span class="pull-left">Show All Bills</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </h:link>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-male fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"><h:outputText value="#{bedroomController.getCountOfStatus(1)}"/></div>
+                                <div>Relaxing guests!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h:link outcome="/client/List">
+                        <div class="panel-footer">
+                            <span class="pull-left">Show All Clients</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </h:link>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-university fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"><h:outputText value="#{hotelReservationController.getCountOfStatus(1)}"/></div>
+                                <div>Confirmed reservations!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h:link outcome="/hotelReservation/List">
+                        <div class="panel-footer">
+                            <span class="pull-left">Show All Reservations</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </h:link>
+                </div>
+            </div>
+        </div>
+
+    </ui:define> 
+</ui:decorate>
+
+

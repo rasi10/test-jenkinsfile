@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHotelReservationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form" prependId="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHotelReservationEmpty}" rendered="#{hotelReservationController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{hotelReservationController.items.rowCount > 0}">
+                    <h:outputText value="#{hotelReservationController.pagination.pageFirstItem + 1}..#{hotelReservationController.pagination.pageLastItem + 1}/#{hotelReservationController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{hotelReservationController.previous}" value="#{bundle.Previous} #{hotelReservationController.pagination.pageSize}" rendered="#{hotelReservationController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{hotelReservationController.next}" value="#{bundle.Next} #{hotelReservationController.pagination.pageSize}" rendered="#{hotelReservationController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable class="table table-responsive table-bordered" value="#{hotelReservationController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHotelReservationTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHotelReservationTitle_clientId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clientId.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHotelReservationTitle_entryDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.entryDate}">
+                                <f:convertDateTime pattern="yyyy/MM/dd" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHotelReservationTitle_exitDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.exitDate}">
+                                <f:convertDateTime pattern="yyyy/MM/dd" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHotelReservationTitle_priceDaily}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.priceDaily}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHotelReservationTitle_bedroomId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bedroomId.number}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHotelReservationTitle_reservationStatusId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reservationStatusId.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink class="btn btn-default btn-sm" action="#{hotelReservationController.prepareView}" value="#{bundle.ListHotelReservationViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink class="btn btn-default btn-sm" action="#{hotelReservationController.prepareEdit}" value="#{bundle.ListHotelReservationEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink class="btn btn-default btn-sm" action="#{hotelReservationController.destroy}" value="#{bundle.ListHotelReservationDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink class="btn btn-primary" action="#{hotelReservationController.prepareCreate}" value="#{bundle.ListHotelReservationCreateLink}"/>
+                <br />
+                <br />
+                <h:link class="btn btn-default" outcome="/index" value="#{bundle.ListHotelReservationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

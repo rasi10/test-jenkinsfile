@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBillTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form" prependId="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBillEmpty}" rendered="#{billController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{billController.items.rowCount > 0}">
+                    <h:outputText value="#{billController.pagination.pageFirstItem + 1}..#{billController.pagination.pageLastItem + 1}/#{billController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{billController.previous}" value="#{bundle.Previous} #{billController.pagination.pageSize}" rendered="#{billController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{billController.next}" value="#{bundle.Next} #{billController.pagination.pageSize}" rendered="#{billController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable class="table table-responsive table-bordered" value="#{billController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBillTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBillTitle_billStatusId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.billStatusId.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBillTitle_hotelReservationId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hotelReservationId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hotelReservationId.clientId.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBillTitle_hotelReservationTotalDays}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalDays}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBillTitle_TotalBill}"/>
+                            </f:facet>
+                            <h:outputText value="$ #{item.totalBill}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Actions"/>
+                            </f:facet>
+                            <h:commandLink class="btn btn-default btn-sm" action="#{billController.prepareView}" value="#{bundle.ListBillViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink class="btn btn-default btn-sm" action="#{billController.prepareEdit}" value="#{bundle.ListBillEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink class="btn btn-default btn-sm" action="#{billController.destroy}" value="#{bundle.ListBillDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink class="btn btn-primary" action="#{billController.prepareCreate}" value="#{bundle.ListBillCreateLink}"/>
+                <br />
+                <br />
+                <h:link class="btn btn-default" outcome="/index" value="#{bundle.ListBillIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

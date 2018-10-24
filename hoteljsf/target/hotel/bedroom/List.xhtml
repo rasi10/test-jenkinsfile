@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBedroomTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form prependId="false" styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBedroomEmpty}" rendered="#{bedroomController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{bedroomController.items.rowCount > 0}">
+                    <h:outputText value="#{bedroomController.pagination.pageFirstItem + 1}..#{bedroomController.pagination.pageLastItem + 1}/#{bedroomController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{bedroomController.previous}" value="#{bundle.Previous} #{bedroomController.pagination.pageSize}" rendered="#{bedroomController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{bedroomController.next}" value="#{bundle.Next} #{bedroomController.pagination.pageSize}" rendered="#{bedroomController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable class="table table-responsive table-bordered" value="#{bedroomController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBedroomTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBedroomTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBedroomTitle_floor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.floor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBedroomTitle_number}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.number}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBedroomTitle_priceDaily}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.priceDaily}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBedroomTitle_bedroomStatusId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bedroomStatusId.toString()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBedroomTitle_typeBedroomId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeBedroomId.toString()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink class="btn btn-default btn-sm" action="#{bedroomController.prepareView}" value="#{bundle.ListBedroomViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink class="btn btn-default btn-sm" action="#{bedroomController.prepareEdit}" value="#{bundle.ListBedroomEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink class="btn btn-default btn-sm" action="#{bedroomController.destroy}" value="#{bundle.ListBedroomDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink class="btn btn-primary" action="#{bedroomController.prepareCreate}" value="#{bundle.ListBedroomCreateLink}"/>
+                <br />
+                <br />
+                <h:link class="btn btn-default" outcome="/index" value="#{bundle.ListBedroomIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
