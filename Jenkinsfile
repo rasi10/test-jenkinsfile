@@ -1,15 +1,16 @@
 pipeline{
     agent any
     stages{
-        stage('first stage'){
+        stage('Checkout'){
             steps{
-                sh 'echo first stage!'
+                checkout scm
             }
             
         }
-        stage('second stage'){
+        stage('checking the file system'){
             steps{
-                sh 'echo second!'
+                sh 'pwd'
+                sh 'ls -lart'
             }
             
         }
@@ -19,3 +20,4 @@ pipeline{
     }
 
 }
+
